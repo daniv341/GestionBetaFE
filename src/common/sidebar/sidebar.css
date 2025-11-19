@@ -1,0 +1,29 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #37424a;
+}
+
+.side-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: 0.2s;
+  display: block;
+}
+
+.side-link:hover {
+  color: #d0d0d0;
+}
+
+.side-sublink {
+  color: #cfd3d6;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  transition: 0.2s;
+}
+
+.side-sublink:hover {
+  color: #ffffff;
+}
