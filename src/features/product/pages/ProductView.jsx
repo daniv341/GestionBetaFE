@@ -1,11 +1,10 @@
-<<<<<<< Updated upstream
-=======
 import React from 'react'
 import ProductList from '../components/ProductList'
 
 function ProductView() {
   return (
-  <section >
+  <section>
+
         <h1>Lista de productos</h1>
         <button>Nuevo Producto</button>
         <ProductList></ProductList>
@@ -14,5 +13,6 @@ function ProductView() {
   )
 }
 
+
 export default ProductView
->>>>>>> Stashed changes
+

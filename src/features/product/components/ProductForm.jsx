@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import "../styles/formProduct.css";
 
 export default function ProductForm() {
   const {
@@ -19,7 +20,10 @@ export default function ProductForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="p-4 bg-light rounded shadow-sm">
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      className="formProduct  p-4 bg-light rounded shadow-sm"
+    >
       <h2 className="mb-3">Cargar producto</h2>
 
       {/* ID */}
@@ -33,7 +37,9 @@ export default function ProductForm() {
           type="text"
           className={`form-control ${errors.id ? "is-invalid" : ""}`}
         />
-        {errors.id && <div className="invalid-feedback">{errors.id.message}</div>}
+        {errors.id && (
+          <div className="invalid-feedback">{errors.id.message}</div>
+        )}
       </div>
 
       {/* Nombre */}
@@ -47,7 +53,9 @@ export default function ProductForm() {
           type="text"
           className={`form-control ${errors.nombre ? "is-invalid" : ""}`}
         />
-        {errors.nombre && <div className="invalid-feedback">{errors.nombre.message}</div>}
+        {errors.nombre && (
+          <div className="invalid-feedback">{errors.nombre.message}</div>
+        )}
       </div>
 
       {/* Descripción */}
@@ -67,12 +75,13 @@ export default function ProductForm() {
             required: "Campo obligatorio",
             valueAsNumber: true,
             min: {
-              value: 0.01,
+              value: 0,
               message: "Debe ser un número positivo",
             },
           })}
           type="number"
           step="0.01"
+          min="0"
           className={`form-control ${errors.precioVenta ? "is-invalid" : ""}`}
         />
         {errors.precioVenta && (
@@ -87,12 +96,13 @@ export default function ProductForm() {
             required: "Campo obligatorio",
             valueAsNumber: true,
             min: {
-              value: 0.01,
+              value: 0,
               message: "Debe ser un número positivo",
             },
           })}
           type="number"
           step="0.01"
+          min="0"
           className={`form-control ${errors.precioCompra ? "is-invalid" : ""}`}
         />
         {errors.precioCompra && (
@@ -112,6 +122,7 @@ export default function ProductForm() {
             },
           })}
           type="number"
+          min="0"
           className={`form-control ${errors.stockActual ? "is-invalid" : ""}`}
         />
         {errors.stockActual && (
@@ -130,6 +141,7 @@ export default function ProductForm() {
             },
           })}
           type="number"
+          min="0"
           className={`form-control ${errors.stockMinimo ? "is-invalid" : ""}`}
         />
         {errors.stockMinimo && (
@@ -145,13 +157,16 @@ export default function ProductForm() {
         </select>
       </div>
 
-
       <div className="d-flex gap-2">
         <button type="submit" className="btn btn-primary">
           Guardar
         </button>
 
-        <button type="button" className="btn btn-secondary" onClick={handleCancel}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handleCancel}
+        >
           Cancelar
         </button>
       </div>
