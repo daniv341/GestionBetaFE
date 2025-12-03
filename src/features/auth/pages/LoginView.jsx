@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../../redux/action"; 
 export default function FormularioLogin() {
   const {
     register,
@@ -9,11 +10,25 @@ export default function FormularioLogin() {
     formState: { errors },
   } = useForm();
 
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async (data) => {
-    e.preventDefault();
-    const result = await dispach(loginUser(data));
+    try {
+      const resultAction = await dispatch(loginUser(data));
+
+      console.log("Resultado login:", resultAction);
+
+
+      if (resultAction?.payload) {
+        // Por ahora sólo vemos que llegó algo
+        // Más adelante podés hacer navigate("/home") o similar
+        navigate("/"); // o "/dashboard", lo que tengas
+      }
+    } catch (error) {
+      console.error("Error en el login:", error);
+      // acá podrías mostrar un mensaje en pantalla si querés
+    }
   };
 
   return (
@@ -43,6 +58,11 @@ export default function FormularioLogin() {
             },
           })}
         />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">
+            {errors.email.message}
+          </p>
+        )}
 
         <div className="mt-4">
           <label className="block mb-1 text-sm font-medium" htmlFor="password">
@@ -65,6 +85,11 @@ export default function FormularioLogin() {
               },
             })}
           />
+          {errors.contraseña && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.contraseña.message}
+            </p>
+          )}
         </div>
 
         <button
