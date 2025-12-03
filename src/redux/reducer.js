@@ -1,7 +1,7 @@
 import {
   POST_NEW_PRODUCT, GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID, DELETE_PRODUCT_BY_ID, UPDATE_PRODUCT_BY_ID,
   POST_NEW_VENTA, GET_ALL_VENTAS, GET_VENTA_BY_ID, DELETE_VENTA_BY_ID, UPDATE_VENTA_BY_ID,
-  POST_NEW_USER, GET_ALL_USERS, GET_USER_BY_ID, DELETE_USER_BY_ID, UPDATE_USER_BY_ID
+  POST_NEW_USER, GET_ALL_USERS, GET_USER_BY_ID, LOGIN_USER, LOGOUT_USER
 } from "./actionTypes";
 
 const initialState = {
@@ -11,6 +11,10 @@ const initialState = {
   ventas: [],
   allVentas: [],
   ventaDetail: {},
+
+  user: null,
+  token: localStorage.getItem("token") || null,
+  authenticated: false
 
 };
 
@@ -62,13 +66,13 @@ const rootReducer = (state = initialState, action) => {
         ventas: [...state.ventas, action.payload],
       };
 
-    case GET_ALL_VENTAS:    
+    case GET_ALL_VENTAS:
       return {
         ...state,
         ventas: action.payload,
         allVentas: action.payload,
       };
-    
+
     case GET_VENTA_BY_ID:
       return {
         ...state,
@@ -80,16 +84,31 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ventas: state.ventas.filter(venta => venta.id !== action.payload),
       };
-      
+
     case UPDATE_VENTA_BY_ID:
       return {
-        ...state, 
+        ...state,
         ventas: state.ventas.map(venta =>
           venta.id === action.payload.id ? action.payload : venta
         ),
         allVentas: state.allVentas.map(v =>
           v.id === action.payload.id ? action.payload : v
         ),
+      };
+
+    case LOGIN_USER:
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+      };
+
+    case LOGOUT_USER:
+      return {
+        ...state,
+        user: null,
+        token: null,
+        authenticated: false,
       };
 
 

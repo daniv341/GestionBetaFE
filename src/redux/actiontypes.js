@@ -9,5 +9,10 @@ export const GET_VENTA_BY_ID = "GET_VENTA_BY_ID";
 export const DELETE_VENTA_BY_ID = "DELETE_VENTA_BY_ID";
 export const UPDATE_VENTA_BY_ID = "UPDATE_VENTA_BY_ID";
 export const POST_NEW_USER = "POST_NEW_USER";
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
+
 
 
