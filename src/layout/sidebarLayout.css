@@ -1,0 +1,10 @@
+.containerSidebar {
+  
+  max-width: 250px;
+  min-height: 100vh;
+}
+
+.containerChildren {
+  margin-left: 250px;
+  padding: 20px;
+}
