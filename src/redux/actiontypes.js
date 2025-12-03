@@ -1,0 +1,1 @@
+export const POST_NEW_PRODUCT = "POST_NEW_PRODUCT";
