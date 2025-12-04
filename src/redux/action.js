@@ -160,7 +160,7 @@ export function updateVentaById(id, updatedData) {
 export function newPostUser(values) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`${url}/api/v1/usuarios`, values);
+      const res = await axios.post(`${url}/api/v1/usuarios/register`, values);
       return dispatch({
         type: POST_NEW_USER,
         payload: res.data,
