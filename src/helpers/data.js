@@ -1,4 +1,4 @@
-const data = [
+ const data = [
   {
     Nombre: "Gomitas ácidas",
     Categoría: "Golosinas",
@@ -30,4 +30,5 @@ const data = [
     Stock: 45
   }
 ];
+
 export default data;

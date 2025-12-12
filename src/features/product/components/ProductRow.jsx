@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ProductRow({row}) {
+function ProductRow({row,}) {
     console.log(row);
     
   return (
