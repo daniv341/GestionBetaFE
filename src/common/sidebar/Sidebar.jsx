@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./sidebar.css";
 
 function Sidebar({ onNavigate }) {
   const [openProducts, setOpenProducts] = useState(false);
@@ -9,36 +10,27 @@ function Sidebar({ onNavigate }) {
   };
 
   return (
-    <aside
-      className="sidebar d-flex flex-column p-4"
-      style={{
-        width: "250px",
-        background: "#475057",
-        color: "white",
-        height: "100vh",
-      }}
-      aria-label="Barra lateral"
-    >
-      <header>
-        <h4 className="mb-5 fw-bold">Inicio</h4>
-      </header>
+    <aside className="sidebar" aria-label="Barra lateral">
+      <p className="fs-3 fw-bold mb-4 text-white">Gestión Beta</p>
 
       <nav aria-label="Navegación principal">
-        <ul className="p-0 m-0 list-unstyled">
+        <ul className="p-0 m-0 list-unstyled d-flex flex-column gap-3 optionSidebar">
           <li>
             <Link
               to="/"
-              className="btn btn-link text-white p-0 fw-bold fs-4"
+              className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white text-decoration-none"
+              onClick={() => handleLinkClick("/")}
             >
-              Productos
+              <span>Productos</span>
             </Link>
           </li>
           <li>
             <Link
-              to="#ventas"
-              className="btn btn-link text-white p-0 fw-bold fs-4"
+              to="/sales"
+              className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white text-decoration-none"
+              onClick={() => handleLinkClick("/sales")}
             >
-              Ventas
+              <span>Ventas</span>
             </Link>
           </li>
         </ul>

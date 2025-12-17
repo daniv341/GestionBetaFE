@@ -1,2 +1,2 @@
- const columns = ['Nombre', 'Categoría', 'Precio', 'Stock', 'Acciones'];
- export default columns;
+const columns = ['id', 'nombre', 'descripcion', 'categoria', 'precio_venta', 'stock_actual', 'stock_minimo', 'acciones'];
+export default { columns };
