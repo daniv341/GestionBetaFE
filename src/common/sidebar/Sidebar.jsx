@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
-import IconProduc from "./IconProduct";
 import IconProduct from "./IconProduct";
 import IconSales from "./IconSales";
 
@@ -20,7 +19,7 @@ function Sidebar({ onNavigate }) {
         <ul className="p-0 m-0 list-unstyled d-flex flex-column gap-3 optionSidebar ">
           <li>
             <Link
-              to="/"
+              to="/panel-productos"
               className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white"
             >
               <IconProduct></IconProduct>

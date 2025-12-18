@@ -4,6 +4,7 @@ import { getAllProducts } from "../../../redux/action";
 import DataTable from "../../../common/sidebar/DataTable";
 import colsProduct from "../../../helpers/colsProduct.js";
 import ProductRow from "../components/ProductRow";
+import { Link } from "react-router-dom";
 
 const ProductView = () => {
   const dispatch = useDispatch();
@@ -20,12 +21,15 @@ const ProductView = () => {
 
   return (
     <>
-      <section className="p-4 lg:p-8">
-        <div className="flex justify-between items-center flex-wrap gap-2 mb-4">
-          <h1 className="text-dark font-bold text-xl">Gestión de productos</h1>
-          <button className="border bg-white rounded-md text-gray-600 hover:text-gray-800 p-2 flex justify-center items-center text-sm">
-            <span className="text-sm">Nuevo producto</span>
-          </button>
+      <section className="p-4 mt-4">
+        <h3 className="text-dark font-bold">Gestión de productos</h3>
+        <div className="mb-2 d-flex justify-content-end">
+          <Link
+            to="/panel-productos/formulario-producto"
+            className="border bg-white rounded p-2 text-muted text-decoration-none"
+          >
+            + Agregar producto
+          </Link>
         </div>
 
         {products && products.length > 0 ? (

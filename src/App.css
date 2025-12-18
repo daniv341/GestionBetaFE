@@ -13,3 +13,9 @@ body{
 a{
   text-decoration: none;
 }
+
+input{
+  height: 10px;
+  padding: 10px;
+
+}
