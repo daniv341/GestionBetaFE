@@ -10,11 +10,11 @@ export const fetchProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(URL_PRODUCTS);
-      // Si la respuesta es un array, retórnalo
+    
       if (Array.isArray(response.data)) {
         return response.data;
       }
-      // Si está envuelto en un objeto, busca la propiedad con los datos
+   
       return response.data.data || response.data.productos || response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
