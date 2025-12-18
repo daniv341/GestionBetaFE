@@ -37,11 +37,32 @@ export const fetchProduct = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
   "products/createProduct",
-  async (product, { rejectWithValue }) => {
+  async (productWithUser, { rejectWithValue }) => {
     try {
-      const response = await axios.post(URL_CREATE_PRODUCT, product);
+      const { user, ...product } = productWithUser;
+      
+    
+      const productData = {
+        nombre: product.nombre,
+        descripcion: product.descripcion,
+        precio_venta: parseFloat(product.precio_venta),
+        precio_compra: parseFloat(product.precio_compra),
+        categoria: product.categoria,
+        SKU: product.SKU || null,
+        stock_actual: parseInt(product.stock_actual),
+        stock_minimo: parseInt(product.stock_minimo),
+        enable: product.enable !== false,
+        usuarioId: user?.id,
+      };
+
+      console.log("Enviando producto:", productData);
+      console.log("Token en header:", axios.defaults.headers.common["Authorization"]);
+      console.log("Usuario ID:", user?.id);
+      const response = await axios.post(URL_CREATE_PRODUCT, productData);
+      console.log("Respuesta del servidor:", response.data);
       return response.data;
     } catch (error) {
+      console.error("Error creando producto:", error.response?.data || error.message);
       return rejectWithValue(error.response?.data || error.message);
     }
   }

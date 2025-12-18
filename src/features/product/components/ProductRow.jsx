@@ -19,14 +19,15 @@ function ProductRow({row,}) {
         <Link
           title="Ver producto"
           to={`/products/${row.id}`}
-          className="btn btn-sm btn-info"
+          className="btn btn-sm"
+          style={{backgroundColor: '#798294ff', color: 'white', border: 'none'}}
         >
           <i className="bi bi-eye"></i>
         </Link>
         <Link
           title="Editar producto"
           to={`/products/edit/${row.id}`}
-          className="btn btn-sm btn-warning"
+          className="btn btn-sm btn-primary"
         >
           <i className="bi bi-pencil"></i>
         </Link>

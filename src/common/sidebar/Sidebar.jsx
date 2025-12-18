@@ -16,10 +16,14 @@ function Sidebar() {
               to="/products"
               end
               className={({ isActive }) =>
-                `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${
-                  isActive ? "fw-bold bg-dark rounded" : ""
+                `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${isActive ? "fw-bold bg-dark rounded" : ""
                 }`
               }
+            >
+            </NavLink>
+            <NavLink
+              to="/panel-productos"
+              className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white"
             >
               <IconProduct />
               <span>Productos</span>
@@ -30,8 +34,7 @@ function Sidebar() {
             <NavLink
               to="/ventas"
               className={({ isActive }) =>
-                `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${
-                  isActive ? "fw-bold bg-dark rounded" : ""
+                `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${isActive ? "fw-bold bg-dark rounded" : ""
                 }`
               }
             >
