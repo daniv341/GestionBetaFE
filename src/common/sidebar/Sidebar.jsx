@@ -1,40 +1,43 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import "./sidebar.css";
-import IconProduc from "./IconProduct";
 import IconProduct from "./IconProduct";
 import IconSales from "./IconSales";
 
-function Sidebar({ onNavigate }) {
-  const [openProducts, setOpenProducts] = useState(false);
-
-  const handleLinkClick = (path) => {
-    if (onNavigate) onNavigate(path);
-  };
-
+function Sidebar() {
   return (
     <aside className="sidebar" aria-label="Barra lateral">
-      <p className="fs-3  fw-bold mb-4 text-white">Gestión Beta</p>
+      <p className="fs-3 fw-bold mb-4 text-white">Gestión Beta</p>
 
       <nav aria-label="Navegación principal">
-        <ul className="p-0 m-0 list-unstyled d-flex flex-column gap-3 optionSidebar ">
+        <ul className="p-0 m-0 list-unstyled d-flex flex-column gap-3 optionSidebar">
           <li>
-            <Link
-              to="/"
-              className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white"
+            <NavLink
+              to="/products"
+              end
+              className={({ isActive }) =>
+                `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${
+                  isActive ? "fw-bold bg-dark rounded" : ""
+                }`
+              }
             >
-              <IconProduct></IconProduct>
-              <span> Productos</span>
-            </Link>
+              <IconProduct />
+              <span>Productos</span>
+            </NavLink>
           </li>
+
           <li>
-            <Link
-              to="#ventas"
-              className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white"
+            <NavLink
+              to="/ventas"
+              className={({ isActive }) =>
+                `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${
+                  isActive ? "fw-bold bg-dark rounded" : ""
+                }`
+              }
             >
-              <IconSales></IconSales>
+              <IconSales />
               <span>Ventas</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

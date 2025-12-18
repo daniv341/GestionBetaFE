@@ -1,17 +1,16 @@
 .sidebar {
+  position: relative;        /* 🔑 clave */
   min-height: 100vh;
   width: 300px;
-  top: 0px;
-  left: 0;
-  z-index: 996;
+
   transition: all 0.3s;
   padding: 64px 32px;
+
   border-right: 1px solid #ebe8e8;
   background-color: #303A4D;
 }
 
-
 .optionSidebar {
   color: rgb(171, 162, 162);
-  font-style: medium;
+  font-weight: 500;          /* font-style no es válido para "medium" */
 }
