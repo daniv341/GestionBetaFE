@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../redux/action";
+import { getProducts } from "../../../redux/action";
 import DataTable from "../../../common/sidebar/DataTable";
 import colsProduct from "../../../helpers/colsProduct.js";
 import ProductRow from "../components/ProductRow";
@@ -11,8 +11,8 @@ const ProductView = () => {
   const products = useSelector((state) => state.products);
 
   useEffect(() => {
-    console.log("ProductView montado, despachando getAllProducts");
-    dispatch(getAllProducts());
+    console.log("ProductView montado, despachando getProducts");
+    dispatch(getProducts());
   }, [dispatch]);
 
   useEffect(() => {

@@ -26,44 +26,39 @@ export function newPostProduct(values) {
   };
 }
 
-export function getAllProducts() {
+export function getProducts() {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${url}/api/v1/productos`);
+      const token = localStorage.getItem("token");
+
+      const res = await axios.get(`${url}/api/v1/productos`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       return dispatch({
         type: GET_ALL_PRODUCTS,
-        payload: res.data,
+        payload: res.data, 
       });
+    } catch (error) {
+      console.log("Error al obtener productos:", error?.response?.data || error.message);
     }
-    catch (error) {
-      console.log("Error al obtener productos:", error);
-    }
-  }
+  };
 }
-export function getAllProductById() {
+
+export function getProductById(id) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${url}/api/v1/productos/:id`);
+      const token = localStorage.getItem("token");
+
+      const res = await axios.get(`${url}/api/v1/productos/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
       return dispatch({
         type: GET_PRODUCT_BY_ID,
         payload: res.data,
       });
     } catch (error) {
-      console.log("Error al obtener producto por ID:", error);
-    }
-  };
-}
-
-export function deleteProductById(id) {
-  return async function (dispatch) {
-    try {
-      await axios.delete(`${url}/api/v1/productos/${id}`);
-      return dispatch({
-        type: DELETE_PRODUCT_BY_ID,
-        payload: id,
-      });
-    } catch (error) {
-      console.log("Error al eliminar producto por ID:", error);
+      console.log("Error al obtener producto por ID:", error?.response?.data || error.message);
     }
   };
 }
@@ -84,45 +79,80 @@ export function updateProductById(id, updatedData) {
 }
 
 //CRUD para Ventas
-export function newPostVenta(values) {
+export function newPostVenta(payload) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(`${url}/api/v1/ventas`, values);
-      return dispatch({
+      const token = localStorage.getItem("token");
+
+      const res = await axios.post(
+        `${url}/api/v1/ventas`,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      dispatch({
         type: POST_NEW_VENTA,
         payload: res.data,
       });
+
+      return res.data;
+
     } catch (error) {
-      console.log("Error al crear venta:", error);
+      console.error(
+        "Error al crear venta:",
+        error?.response?.data || error.message
+      );
+      throw error;
     }
   };
 }
 
+
 export function getAllVentas() {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${url}/api/v1/ventas`);
+      const token = localStorage.getItem("token");
+
+      const res = await axios.get(`${url}/api/v1/ventas`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       return dispatch({
         type: GET_ALL_VENTAS,
-        payload: res.data,
+        payload: res.data, 
       });
+    } catch (error) {
+      console.log("Error al obtener ventas:", error?.response?.data || error.message);
     }
-    catch (error) {
-      console.log("Error al obtener ventas:", error);
-    }
-  }
+  };
 }
 
-export function getAllVentaById() {
+
+
+export function getVentaById(id) {
   return async function (dispatch) {
     try {
-      const res = await axios.get(`${url}/api/v1/ventas/:id`);
+      const token = localStorage.getItem("token");
+
+      const res = await axios.get(`${url}/api/v1/ventas/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       return dispatch({
         type: GET_VENTA_BY_ID,
         payload: res.data,
       });
     } catch (error) {
-      console.log("Error al obtener venta por ID:", error);
+      console.log(
+        "Error al obtener venta por ID:",
+        error?.response?.data || error.message
+      );
     }
   };
 }
@@ -188,7 +218,7 @@ export function getAllUsers() {
 
 export function getUserById() {
   return async function (dispatch) {
-    try {     
+    try {
       const res = await axios.get(`${url}/api/v1/usuarios/:id`);
       return dispatch({
         type: GET_USER_BY_ID,
@@ -196,7 +226,7 @@ export function getUserById() {
       });
     } catch (error) {
       console.log("Error al obtener usuario por ID:", error);
-    } 
+    }
 
   };
 }
