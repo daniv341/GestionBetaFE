@@ -1,14 +1,20 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import NavBar from "./navBar";
+import "./sidebarLayout.css";
 
 const SidebarLayout = () => {
   return (
-    <div className="d-flex" style={{ minHeight: "100vh" }}>
-      <Sidebar />
-      <main className="flex-grow-1 p-3" style={{ minWidth: 0 }}>
-        <Outlet />
-      </main>
+    <div className="app-layout">
+        <Sidebar />
+
+
+      <section className="app-main">
+        <NavBar />
+        <main className="app-content">
+          <Outlet />
+        </main>
+      </section>
     </div>
   );
 };
