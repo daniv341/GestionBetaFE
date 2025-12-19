@@ -53,7 +53,7 @@ function LoginPanel() {
             const resultAction = await dispatch(loginUser(formData));
             if (resultAction?.payload) {
                 handleClose();
-                navigate("/");
+                navigate("/panel-productos");
             } else {
                 setError("Credenciales inválidas. Verifica tu email y contraseña.");
             }

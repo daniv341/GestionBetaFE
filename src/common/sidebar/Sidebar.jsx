@@ -7,23 +7,21 @@ import IconSales from "./IconSales";
 function Sidebar() {
   return (
     <aside className="sidebar" aria-label="Barra lateral">
-      <p className="fs-3 fw-bold mb-4 text-white">Gestión Beta</p>
 
-      <nav aria-label="Navegación principal">
+      <div className="titulo w-100 py-1 mb-5 text-center">
+        <h5 className="fw-bold m-0 text-white">Gestión Beta</h5>
+      </div>
+      
+      <nav aria-label="Navegación principal" className="text-center">
         <ul className="p-0 m-0 list-unstyled d-flex flex-column gap-3 optionSidebar">
           <li>
+    
             <NavLink
-              to="/products"
-              end
+              to="/panel-productos"
               className={({ isActive }) =>
                 `px-4 d-flex align-items-center gap-2 py-2 w-100 text-white ${isActive ? "fw-bold bg-dark rounded" : ""
                 }`
               }
-            >
-            </NavLink>
-            <NavLink
-              to="/panel-productos"
-              className="px-4 d-flex align-items-center gap-2 py-2 w-100 text-white"
             >
               <IconProduct />
               <span>Productos</span>
