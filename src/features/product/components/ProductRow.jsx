@@ -1,38 +1,42 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ProductRow({row}) {
+function ProductRow({row,}) {
     console.log(row);
     
   return (
    
   <tr className="align-middle text-start text-secondary">
-      <td className="">{row.Nombre}</td>
-      <td>{row.Categoria}</td>
-      <td>${row.Precio}</td>
-      <td>{row.Stock}</td>
+      <td className="">{row.id}</td>
+      <td>{row.nombre}</td>
+      <td>{row.descripcion}</td>
+      <td>{row.categoria}</td>
+      <td>${row.precio_venta}</td>
+      <td>{row.stock_actual}</td>
+      <td>{row.stock_minimo}</td>
       
-      <td className="d-flex flex-column gap-2 align-items-center flex-lg-row d-lg-table-cell">
+      <td className="d-flex gap-2 align-items-center">
         <Link
-          title="Ver menú"
-          to="{/admin/productos/ver-menu/${row._id}}"
-          className="me-lg-2 btn btn-secondary border-secondary"
+          title="Ver producto"
+          to={`/products/${row.id}`}
+          className="btn btn-sm"
+          style={{backgroundColor: '#798294ff', color: 'white', border: 'none'}}
         >
-      
+          <i className="bi bi-eye"></i>
         </Link>
         <Link
-          title="Editar menú"
-          to="{/admin/productos/editar-menu/${row._id}}"
-          className="me-lg-2 btn btn-warning"
+          title="Editar producto"
+          to={`/products/edit/${row.id}`}
+          className="btn btn-sm btn-primary"
         >
+          <i className="bi bi-pencil"></i>
         </Link>
         <button
-          variant="danger"
-          title="Eliminar menú"
-          className="me-lg-2"
-         
+          title="Eliminar producto"
+          className="btn btn-sm btn-danger"
+          onClick={() => console.log('Eliminar:', row.id)}
         >
-        
+          <i className="bi bi-trash"></i>
         </button>
       </td>
     </tr>

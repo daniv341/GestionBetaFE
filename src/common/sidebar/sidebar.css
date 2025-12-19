@@ -1,29 +1,16 @@
 .sidebar {
-  
+  position: relative;        /* 🔑 clave */
   min-height: 100vh;
-  background: #37424a;
+  width: 300px;
+
+  transition: all 0.3s;
+  padding: 64px 32px;
+
+  border-right: 1px solid #ebe8e8;
+  background-color: #303A4D;
 }
 
-.side-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: 0.2s;
-  display: block;
-}
-
-.side-link:hover {
-  color: #d0d0d0;
-}
-
-.side-sublink {
-  color: #cfd3d6;
-  text-decoration: none;
-  font-size: 1rem;
-  display: block;
-  transition: 0.2s;
-}
-
-.side-sublink:hover {
-  color: #ffffff;
+.optionSidebar {
+  color: rgb(171, 162, 162);
+  font-weight: 500;          /* font-style no es válido para "medium" */
 }

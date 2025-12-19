@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import axios from "axios";
 import ProductForm from "./features/product/components/ProductForm";
 import {jwtDecode} from "jwt-decode";
-import Sidebar from "./common/sidebar/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./router/AppRouter";
 import LoginView from "./features/auth/pages/LoginView";
+import "./App.css";
 
 function App() {
 

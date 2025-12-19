@@ -9,3 +9,13 @@ body{
   width: 100%;
   box-sizing: border-box;
 }
+
+a{
+  text-decoration: none;
+}
+
+input{
+  height: 10px;
+  padding: 10px;
+
+}
